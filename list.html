@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Primes</title>
+</head>
+<body>
+	<script type="text/javascript">
+		jbDebugMode = true; // Enable debugging for JBrix! (Easy 8) )
+	</script>
+	<script src="https://rawgit.com/YSCHGroup/JBrix/master/functions/jb-getUrlVariables.js"></script> <!-- Import JBrix getUrlVariables module -->
+	<script type="text/javascript">
+		function lastElementIn(arr) {
+			return arr[arr.length-1];
+		}
+
+		function formatNumber(str) {
+			return String(str).replace(new RegExp(" ", "g"), "").split(".").join("").replace(new RegExp(",", "g"), "");
+		}
+
+		function calcPrimes() {
+			from = formatNumber(from);
+			to = formatNumber(to);
+
+			if (typeof raw == "undefined") {raw = false}
+			else if (raw == "false") {raw = false}
+			else if (raw == "true") {raw = true}
+
+			if (!(isNaN(from) || isNaN(to))) {
+
+				var numbers = [2]
+				var total = 0;
+
+				if (!raw) { document.write("Calculating prime numbers between " + from + " and " + to + "<br><br>"); }
+
+				console.log("Raw From: " + from + "\nRaw To: " + to)
+
+				if (from < lastElementIn(numbers)) {
+					from = lastElementIn(numbers);
+				}
+				while(from > lastElementIn(numbers)) {
+					var largestNum = lastElementIn(numbers);
+					numbers.push(largestNum + 1);
+				}
+				console.log("From: " + from + "\nTo: " + to)
+
+				console.log(numbers);
+
+				var Dividable;
+				for (var n = from; n < to; n++) {
+					Dividable = false;
+					for (var i = numbers.length - 1; i >= 0; i--) {
+						if (n % numbers[i] == 0) {
+							Dividable = true;
+							break;
+						}
+					}
+					if (!Dividable) {
+						document.write(n + "<br>");
+						total++;
+					}
+					numbers.push(n);
+				}
+
+				if (!raw) { document.write("<br>Found a totla of " + total + " primes!"); }
+
+				console.log(numbers);
+			}
+		}
+
+		// Run it.
+		calcPrimes();
+
+	</script>
+</body>
+</html>

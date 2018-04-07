@@ -4,79 +4,10 @@
 	<title>Primes</title>
 </head>
 <body>
-	<form id="settings">
-		<input type="text" id="from" required="true" placeholder="From value">
-		<input type="text" id="to" required="true" placeholder="To value">
-		<input type="submit" name="submit" onclick="calcPrimes();" value="Calculate" id="button">
+	<form action="list.html" method="get">
+		<input type="number" id="from" placeholder="From value" name="from" required>
+		<input type="number" id="to" placeholder="To value" name="to" required>
+		<input type="submit" value="Calculate">
 	</form>
-
-	<p id="loading" style="display: none;">Loading...</p>
-
-	<script type="text/javascript">
-
-		function lastElementIn(arr) {
-			return arr[arr.length-1];
-		}
-
-		function formatNumber(str) {
-			return str.replace(new RegExp(" ", "g"), "").replace(new RegExp(".", "").replace(new RegExp(",", ""));
-		}
-
-		function calcPrimes() {
-			document.getElementById("loading").style.display = "block";
-			
-			var firstVal = document.getElementById("from");
-			var lastVal = document.getElementById("to");
-
-			from = parseInt(formatNumber(firstVal.value));
-			to = parseInt(formatNumber(lastVal.value));
-
-			if (!(isNaN(from) || isNaN(to) || from == null || to == null)) {
-				document.getElementById("button").style.display = "none";
-				firstVal.style.display = "none";
-				lastVal.style.display = "none";
-
-				var numbers = [2]
-				var total = 0;
-
-				document.write("Calculating prime numbers between " + from + " and " + to + "<br><br>");
-
-				console.log("Raw From: " + from + "\nRaw To: " + to)
-
-				if (from < lastElementIn(numbers)) {
-					from = lastElementIn(numbers);
-				}
-				while(from > lastElementIn(numbers)) {
-					var largestNum = lastElementIn(numbers);
-					numbers.push(largestNum + 1);
-				}
-				console.log("From: " + from + "\nTo: " + to)
-
-				console.log(numbers);
-
-				var Dividable;
-				for (var n = from; n < to; n++) {
-					Dividable = false;
-					for (var i = numbers.length - 1; i >= 0; i--) {
-						if (n % numbers[i] == 0) {
-							Dividable = true;
-							break;
-						}
-					}
-					if (!Dividable) {
-						document.write(n + "<br>");
-						total++;
-					}
-					numbers.push(n);
-				}
-
-				document.write("<br>Found a totla of " + total + " primes!");
-
-				console.log(numbers);
-			}
-
-			document.getElementById("loading").style.display = "none";
-		}
-	</script>
 </body>
 </html>
