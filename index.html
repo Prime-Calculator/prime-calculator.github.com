@@ -18,14 +18,18 @@
 			return arr[arr.length-1];
 		}
 
+		function formatNumber(str) {
+			return str.replace(new RegExp(" ", "g"), "").replace(new RegExp(".", "").replace(new RegExp(",", ""));
+		}
+
 		function calcPrimes() {
 			document.getElementById("loading").style.display = "block";
 			
 			var firstVal = document.getElementById("from");
 			var lastVal = document.getElementById("to");
 
-			from = parseInt(firstVal.value.replace(" ", "").replace(".", "").replace(",", ""));
-			to = parseInt(lastVal.value.replace(" ", "").replace(".", "").replace(",", ""));
+			from = parseInt(formatNumber(firstVal.value));
+			to = parseInt(formatNumber(lastVal.value));
 
 			if (!(isNaN(from) || isNaN(to) || from == null || to == null)) {
 				document.getElementById("button").style.display = "none";
