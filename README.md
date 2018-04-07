@@ -1,5 +1,4 @@
-##WebAPI
-
+WebAPI
 ##Use:
 ```
 https://prime-calculator.github.io/list.html?from=1&to=100&raw=true
