@@ -24,8 +24,8 @@
 			var firstVal = document.getElementById("from");
 			var lastVal = document.getElementById("to");
 
-			from = parseInt(firstVal.value);
-			to = parseInt(lastVal.value);
+			from = parseInt(firstVal.value.replace(" ", "").replace(".", "").replace(",", ""));
+			to = parseInt(lastVal.value.replace(" ", "").replace(".", "").replace(",", ""));
 
 			if (!(isNaN(from) || isNaN(to) || from == null || to == null)) {
 				document.getElementById("button").style.display = "none";
