@@ -19,8 +19,8 @@
 		}
 
 		function calcPrimes() {
-			from = formatNumber(from);
-			to = formatNumber(to);
+			from = +formatNumber(from);
+			to = +formatNumber(to);
 
 			if (typeof raw == "undefined") {raw = false}
 			else if (raw == "false") {raw = false}
@@ -36,30 +36,34 @@
 				console.log("Raw From: " + from + "\nRaw To: " + to)
 
 				if (from < lastElementIn(numbers)) {
+					document.write(lastElementIn(numbers) + "<br>");
+					total++;
 					from = lastElementIn(numbers);
 				}
 				while(from > lastElementIn(numbers)) {
 					var largestNum = lastElementIn(numbers);
 					numbers.push(largestNum + 1);
 				}
-				console.log("From: " + from + "\nTo: " + to)
 
-				console.log(numbers);
-
-				var Dividable;
-				for (var n = from; n < to; n++) {
-					Dividable = false;
-					for (var i = numbers.length - 1; i >= 0; i--) {
-						if (n % numbers[i] == 0) {
-							Dividable = true;
-							break;
+				try {
+					var Dividable;
+					for (var n = from; n < to; n++) {
+						Dividable = false;
+						for (var i = numbers.length - 1; i >= 0; i--) {
+							if (n % numbers[i] == 0) {
+								Dividable = true;
+								break;
+							}
 						}
+						if (!Dividable) {
+							document.write(n + "<br>");
+							total++;
+						}
+						numbers.push(n);
 					}
-					if (!Dividable) {
-						document.write(n + "<br>");
-						total++;
-					}
-					numbers.push(n);
+				}
+				catch(e) {
+					console.log(e);
 				}
 
 				if (!raw) { document.write("<br>Found a totla of " + total + " primes!"); }
@@ -71,6 +75,8 @@
 		// Run it.
 		calcPrimes();
 
+		// Add a return to menu button
+		if (!raw) { document.write('<br><button onclick="location.href=\'index.html\'" style="padding: 0 20px;" id="returnBtn">Back</button>'); }
 	</script>
 </body>
 </html>
