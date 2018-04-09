@@ -26,18 +26,31 @@
 			else if (raw == "false") {raw = false}
 			else if (raw == "true") {raw = true}
 
+			if (typeof showIndex == "undefined") {showIndex = false}
+			else if (showIndex == "false") {showIndex = false}
+			else if (showIndex == "true") {showIndex = true}
+
 			if (!(isNaN(from) || isNaN(to))) {
 
 				var numbers = [2]
-				var total = 0;
+				var pIndex = 0;
 
-				if (!raw) { document.write("Calculating prime numbers between " + from + " and " + to + "<br><br>"); }
+				if (!raw) {
+					if (showIndex) {
+						document.write("Calculating prime numbers between " + from + " and " + to + "<br><br><em>[Index] : [Prime]</em><br><br>");
+					}else {
+						document.write("Calculating prime numbers between " + from + " and " + to + "<br><br>");
+					}
+				}
 
 				console.log("Raw From: " + from + "\nRaw To: " + to)
 
 				if (from <= lastElementIn(numbers)) {
-					document.write(lastElementIn(numbers) + "<br>");
-					total++;
+					
+					if (showIndex) { document.write(pIndex + " : <b>" + lastElementIn(numbers) + "</b><br>"); }
+					else { document.write(lastElementIn(numbers) + "<br>"); }
+					
+					pIndex++;
 					from = lastElementIn(numbers);
 				}
 				while(from > lastElementIn(numbers)) {
@@ -56,8 +69,11 @@
 							}
 						}
 						if (!Dividable) {
-							document.write(n + "<br>");
-							total++;
+							
+							if (showIndex) { document.write(pIndex + " : <b>" + n + "</b><br>"); }
+							else { document.write(n + "<br>"); }
+
+							pIndex++;
 						}
 						numbers.push(n);
 					}
@@ -66,7 +82,7 @@
 					console.log(e);
 				}
 
-				if (!raw) { document.write("<br>Found a totla of " + total + " primes!"); }
+				if (!raw) { document.write("<br>Found a totla of " + pIndex + " primes!"); }
 
 				console.log(numbers);
 			}

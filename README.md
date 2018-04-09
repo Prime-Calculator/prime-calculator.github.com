@@ -2,7 +2,7 @@ WebAPI
 
 Use:
 ```
-https://prime-calculator.github.io/list.html?from=1&to=100&raw=true
+https://prime-calculator.github.io/list.html?from=1&to=100&raw=true&showIndex
 ```
 
 Add either:
@@ -17,5 +17,11 @@ Just phrase all data from the URL (with the "&raw") using:
 
 JavaScript:
 ```
-document.body.innerText
+window.onload = document.body.innerText
 ```
+
+Add either:
+- &showIndex
+- &showIndex=true
+
+To also display each prime number's index value!
